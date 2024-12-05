@@ -60,12 +60,12 @@ export const getRequest = async(id) => {
 
 
 // POST
-export const postRequest = async (title, desc) => {
+export const postRequest = async (id, usuario, nascimento ) => {
     try {
         let myBody = {
-            id : 0,
-            title: title,
-            description: desc
+            IdLivro : id,
+            UserName: usuario,
+            UserAno: nascimento
         };
 
         const response = await fetch(BASE_URL,{
