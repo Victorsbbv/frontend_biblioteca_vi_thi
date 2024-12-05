@@ -31,7 +31,7 @@ export const getRequest = async() => {
 
 
 // GET POR ID
-export const getRequest = async(id) => {
+export const getRequestid = async(id) => {
     try {
         // executa o comando
         const response = await fetch (`${BASE_URL}/${id}`, {

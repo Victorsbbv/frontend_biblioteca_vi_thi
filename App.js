@@ -7,6 +7,31 @@ import { getRequest, postRequest, deleteRequest} from './Api';
 
 export default function App() {
 
+  
+  
+  <View style={styles.container}> </View>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [task, setTask] = useState([]);
@@ -67,72 +92,72 @@ export default function App() {
 
   }, [])
 
-  return (
+//   return (
 
-    <View style={styles.container}>
+//     <View style={styles.container}>
 
-      <Text style={styles.label}>App de Tarefas</Text>
-      <TextInput
-        style={styles.input}
-        placeholder='Nome da Tarefa'
-        value={taskTitle}
-        onChangeText={setTaskTitle}
-      />
+//       <Text style={styles.label}>App de Tarefas</Text>
+//       <TextInput
+//         style={styles.input}
+//         placeholder='Nome da Tarefa'
+//         value={taskTitle}
+//         onChangeText={setTaskTitle}
+//       />
 
-      {
-        alert1 ? <Text style={styles.errorText}>
-          Necessario informar o titulo
-        </Text>
-          : <></>
-      }
+//       {
+//         alert1 ? <Text style={styles.errorText}>
+//           Necessario informar o titulo
+//         </Text>
+//           : <></>
+//       }
 
-      <Text style={styles.label}>Descrição da Tarefa:</Text>
-      <TextInput
-        style={[styles.input, styles.textArea]}
-        placeholder='Descrição da tarefa'
-        multiline
-        value={taskDescription}
-        onChangeText={setTaskDescription}
-      />
+//       <Text style={styles.label}>Descrição da Tarefa:</Text>
+//       <TextInput
+//         style={[styles.input, styles.textArea]}
+//         placeholder='Descrição da tarefa'
+//         multiline
+//         value={taskDescription}
+//         onChangeText={setTaskDescription}
+//       />
 
-      {
-        alert2 ? <Text style={styles.errorText}>
-          Necessario mínimo 10 caractareres
-        </Text>
-          : <></>
-      }
+//       {
+//         alert2 ? <Text style={styles.errorText}>
+//           Necessario mínimo 10 caractareres
+//         </Text>
+//           : <></>
+//       }
 
 
 
-      <View style={styles.buttonContainer}>
-        <Button
-          title='Salvar'
-          style={styles.buttonblue}
-          color='deepskyblue'
-          onPress={() => onMessage()} />
-      </View>
+//       <View style={styles.buttonContainer}>
+//         <Button
+//           title='Salvar'
+//           style={styles.buttonblue}
+//           color='deepskyblue'
+//           onPress={() => onMessage()} />
+//       </View>
 
-      {task.length > 0 ? <View style={styles.separator} /> : <></>}
+//       {task.length > 0 ? <View style={styles.separator} /> : <></>}
 
-      <ScrollView>
-        {
-          task.map((item, index) => (
-            <Taskcard
-            key={item.id}
-              title={item.title}
-              description={item.description}
-              status={"Done"}
-              onClick={() => {
-                deleteTask(index, item.id);
-              }}
-            />
-          ))
-        }
+//       <ScrollView>
+//         {
+//           task.map((item, index) => (
+//             <Taskcard
+//             key={item.id}
+//               title={item.title}
+//               description={item.description}
+//               status={"Done"}
+//               onClick={() => {
+//                 deleteTask(index, item.id);
+//               }}
+//             />
+//           ))
+//         }
 
-      </ScrollView>
+//       </ScrollView>
 
-    </View>
-  );
+//     </View>
+//   );
 
 }
 
