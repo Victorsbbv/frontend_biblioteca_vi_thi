@@ -2,15 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 import Taskcard from './Taskcard';
 import { useState, useEffect } from 'react';
-import { getRequest, postRequest, deleteRequest} from './Api';
+import { getRequest, getRequestid, postRequest} from './Api';
 
 
 export default function App() {
-
-  
-  
-  <View style={styles.container}> </View>
-  
   
   
   
