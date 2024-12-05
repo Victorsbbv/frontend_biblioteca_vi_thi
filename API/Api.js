@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8081/api/Task' // MUDAR CONFORME NOVO
+const BASE_URL = 'http://localhost:5177/api/ControllerLivros' // MUDAR CONFORME NOVO
 
 
 // GET
