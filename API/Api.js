@@ -44,7 +44,6 @@ export const getRequestid = async(id) => {
         if (!response.ok){
             throw new Error(`GET Request failed with status: ${response.status}`);
         }
-
         const textData= await response.text();
         const data = JSON.parse(textData);
 

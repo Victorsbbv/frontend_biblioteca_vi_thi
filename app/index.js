@@ -3,28 +3,11 @@ import { StyleSheet, Text, View, TextInput, Button, ScrollView, Pressable } from
 import { useState, useEffect } from 'react';
 //import { getRequest, getRequestid, postRequest} from './Api';
 import { router } from 'expo-router';
-import { getRequest } from '../API/Api';
 
 
 
 export default function Page() {
 
-  const [livro, setLivro] = useState([]);
-  
-  useEffect(() => {
-        const fetchData = async() => {
-          try {
-            const resp = await getRequest();
-            setLivro(resp)
-            
-          } catch (ex) {
-            console.error(ex)
-          }
-        };
-    
-        fetchData();
-    
-      }, [])
 
 
   return(
