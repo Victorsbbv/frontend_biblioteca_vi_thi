@@ -173,6 +173,8 @@ export default function Page() {
    container: {
      flex: 1,
      backgroundColor: '#fff',
+     alignItems: "center",
+    justifyContent: "center",
      padding: 16,
    },
 
