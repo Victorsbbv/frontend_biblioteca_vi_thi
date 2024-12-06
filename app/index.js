@@ -3,23 +3,42 @@ import { StyleSheet, Text, View, TextInput, Button, ScrollView, Pressable } from
 import { useState, useEffect } from 'react';
 //import { getRequest, getRequestid, postRequest} from './Api';
 import { router } from 'expo-router';
+import { getRequest } from '../API/Api';
+
 
 
 export default function Page() {
-  const example = [{id:1}, {id: 2}, {id: 3}, {id: 4}]
+
+  const [livro, setLivro] = useState([]);
   
+  useEffect(() => {
+        const fetchData = async() => {
+          try {
+            const resp = await getRequest();
+            setLivro(resp)
+            
+          } catch (ex) {
+            console.error(ex)
+          }
+        };
+    
+        fetchData();
+    
+      }, [])
+
+
   return(
     <View style={styles.container}>
     <Text> Open up App.js to start working on your app</Text>
     <StatusBar style="auto" />
-    {example.map((item, index) =>(
+    {livro.map((item, index) =>(
       <Pressable onPress={() => {
         router.push({
           pathname: "books/[id]",
           params: {id: item.id}
         })
       }}>
-        <Text>Go to page book {item.id}</Text>
+        <Text>{item.titulo}</Text>
       </Pressable>
     ))}
       </View>
