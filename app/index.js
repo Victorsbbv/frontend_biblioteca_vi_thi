@@ -1,13 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, Pressable } from 'react-native';
 import { useState, useEffect } from 'react';
-//import { getRequest, getRequestid, postRequest} from './Api';
+import { getRequest} from '../API/Api';
 import { router } from 'expo-router';
 
 
 
 export default function Page() {
-
+  const [livro, setLivro] = useState([]);
+  
+  useEffect(() => {
+        const fetchData = async() => {
+          try {
+            const resp = await getRequest();
+            setLivro(resp)
+            
+          } catch (ex) {
+            console.error(ex)
+          }
+        };
+    
+        fetchData();
+    
+      }, [])
 
 
   return(
