@@ -66,7 +66,6 @@ export const postRequest = async (id, usuario, nascimento ) => {
             UserName: usuario,
             UserAno: nascimento
         };
-console.log(myBody);
         const response = await fetch(BASE_URL,{
             method: 'POST',
             headers: {
@@ -74,7 +73,6 @@ console.log(myBody);
             },
             body: JSON.stringify(myBody),
         });
-        console.log(response);
         if(!response.ok){
             throw new Error("Post request failed!!!")
         }

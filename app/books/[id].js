@@ -26,6 +26,7 @@ export default function BooksPage() {
 
       setUserTitle("");
       setUserNascimento("");
+      livro.quantidade - 1;
 
     } else {
 
