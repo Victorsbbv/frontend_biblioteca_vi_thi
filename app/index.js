@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, Pressable } from 'react-native';
 import { useState, useEffect } from 'react';
-import { getRequest} from '../API/Api';
+import { getRequest } from '../API/Api';
 import { router } from 'expo-router';
 
 
@@ -39,6 +39,7 @@ export default function Page() {
         <Text>{item.titulo}</Text>
       </Pressable>
     ))}
+
       </View>
   );
 
