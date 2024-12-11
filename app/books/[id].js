@@ -76,7 +76,7 @@ export default function BooksPage() {
             pathname: "/"
           })
         }}>
-          <Text >VOLTAR</Text>
+          <Text style={{color: "white"}}>VOLTAR</Text>
         </Pressable>
 
       </View>
@@ -169,7 +169,9 @@ const style = StyleSheet.create({
     marginTop: 16,
     borderColor: 'fuchsia',
     borderWidth: 3,
-    borderRadius: 8
+    borderRadius: 8,
+    height: "2rem",
+    width: "5rem"
   },
 
   buttonblue: {
@@ -184,7 +186,7 @@ const style = StyleSheet.create({
   },
   viewBack:{
     height: "2rem",
-    width: "4rem"
+    width: "5rem"
   },
   buttonvoltar: {
     borderWidth: 3,
