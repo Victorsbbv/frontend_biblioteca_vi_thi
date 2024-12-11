@@ -69,70 +69,70 @@ export default function BooksPage() {
   }, [])
 
   return (
-<View>
-<View style={style.container}>
-<Pressable onPress={() => {
-        router.push({
-          pathname: "/"
-        })
-      }}>
-        <Text>VOLTAR</Text>
+    <View>
+      <View style={style.viewBack}>
+        <Pressable style={style.buttonvoltar} onPress={() => {
+          router.push({
+            pathname: "/"
+          })
+        }}>
+          <Text >VOLTAR</Text>
         </Pressable>
 
-</View>
-    
-    <View style={style.container}>
-      <Text>ID do Livro: {id}</Text>
-      <Text> Titulo: {livro.titulo} </Text>
-      <Text> Autor: {livro.autor} </Text>
-      <Text> Ano de Lançamento: {livro.ano} </Text>
-      <Text> Quantidade disponível: {livro.quantidade} </Text>
-      <Text>Faça o cadastro para alugar o livro</Text>
+      </View>
+
+      <View style={style.container}>
+        <Text>ID do Livro: {id}</Text>
+        <Text> Titulo: {livro.titulo} </Text>
+        <Text> Autor: {livro.autor} </Text>
+        <Text> Ano de Lançamento: {livro.ano} </Text>
+        <Text> Quantidade disponível: {livro.quantidade} </Text>
+        <Text>Faça o cadastro para alugar o livro</Text>
 
 
-      <TextInput
-        style={styles.input}
-        placeholder='Nome do Usuário'
-        value={userTitle}
-        onChangeText={setUserTitle}
+        <TextInput
+          style={style.input}
+          placeholder='Nome do Usuário'
+          value={userTitle}
+          onChangeText={setUserTitle}
         />
 
-      {
-        alert1 ? <Text style={styles.errorText}>
-          Necessario informar o nome!
-        </Text>
-          : <></>
+        {
+          alert1 ? <Text style={style.errorText}>
+            Necessario informar o nome!
+          </Text>
+            : <></>
         }
 
 
 
-      <TextInput
-        style={styles.input}
-        placeholder='Ano de Nascimento'
-        value={userNascimento}
-        onChangeText={setUserNascimento}
+        <TextInput
+          style={style.input}
+          placeholder='Ano de Nascimento'
+          value={userNascimento}
+          onChangeText={setUserNascimento}
         />
 
-      {
-        alert2 ? <Text style={styles.errorText}>
-          Necessario informar o ano de nascimento!
-        </Text>
-          : <></>
+        {
+          alert2 ? <Text style={style.errorText}>
+            Necessario informar o ano de nascimento!
+          </Text>
+            : <></>
         }
 
 
 
 
 
-      <View style={styles.buttonContainer}>
-        <Button
-          title='Salvar'
-          style={styles.buttonblue}
-          color='deepskyblue'
-          onPress={() => onMessage()} />
+        <View style={style.buttonContainer}>
+          <Button
+            title='Salvar'
+            style={style.buttonblue}
+            color='deepskyblue'
+            onPress={() => onMessage()} />
+        </View>
       </View>
     </View>
-</View>
 
 
 
@@ -148,20 +148,7 @@ const style = StyleSheet.create({
     backroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  }
-})
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 16,
   },
-
 
   input: {
     borderWidth: 3,
@@ -194,6 +181,21 @@ const styles = StyleSheet.create({
     color: "red",
     fontSize: 12,
     fontStyle: "italic"
+  },
+  viewBack:{
+    height: "2rem",
+    width: "4rem"
+  },
+  buttonvoltar: {
+    borderWidth: 3,
+    borderColor: 'fuchsia',
+    borderRadius: 8,
+    padding: 12,
+    fontSize: 16,
+    backgroundColor: 'deepskyblue',
+    marginBottom: 16,
+    fontStyle: "italic",
+    color: "white"
   },
 
 });
