@@ -86,12 +86,12 @@ export default function BooksPage() {
       </View>
 
       <View style={style.container}>
-        <Text style={style.containerlivros}>ID do Livro: {id} </Text>
-         <Text style={style.containerlivros}>Titulo: {livro.titulo}</Text>
-         <Text style={style.containerlivros}>Autor: {livro.autor} </Text>
-         <Text style={style.containerlivros}>Ano de Lançamento: {livro.ano}</Text> 
-         <Text style={style.containerlivros}>Quantidade disponível: {livro.quantidade}</Text> 
-         <Text style={style.containerlivros}>Faça o cadastro para alugar o livro</Text>
+        <Text style={style.containerlivros}>ID do Livro: {id} {"\n"} 
+         Titulo: {livro.titulo} {"\n"} 
+         Autor: {livro.autor} {"\n"} 
+         Ano de Lançamento: {livro.ano} {"\n"} 
+         Quantidade disponível: {livro.quantidade} {"\n"} 
+         Faça o cadastro para alugar o livro</Text>
 
 
         <TextInput
@@ -155,7 +155,7 @@ export default function BooksPage() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backroundColor: "#fff",
+    backroundColor: "red",
     alignItems: "center",
     justifyContent: "center",
   },
