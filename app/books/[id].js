@@ -1,24 +1,23 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { Button, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useEffect, useState } from "react";
 import { getRequestid, postRequest } from "../../API/Api";
 
 export default function BooksPage() {
   const { id } = useLocalSearchParams();
   const [livro, setlivro] = useState({});
-  const [locacao, setuser] = useState({});
   const [userTitle, setUserTitle] = useState("");
   const [alert1, setAlert1] = useState(false);
   const [userNascimento, setUserNascimento] = useState("");
   const [alert2, setAlert2] = useState(false);
-  const [task, setTask] = useState([]);
-
+  const [alert3, setAlert3] = useState(false);
 
 
 
   const onMessage = async () => {
     setAlert1(false);
     setAlert2(false);
+    setAlert3(false);
 
     if (userTitle !== "" && userNascimento !== "") {
       let emprestimo = await postRequest(id, userTitle, userNascimento);
@@ -26,6 +25,10 @@ export default function BooksPage() {
       setUserTitle("");
       setUserNascimento("");
       livro.quantidade - 1;
+      setAlert3(true)
+      setTimeout(() => {
+        setAlert3(false);
+      }, 4000);
 
     } else {
 
@@ -69,6 +72,7 @@ export default function BooksPage() {
   }, [])
 
   return (
+    <ScrollView>
     <View>
       <View style={style.viewBack}>
         <Pressable style={style.buttonvoltar} onPress={() => {
@@ -82,12 +86,12 @@ export default function BooksPage() {
       </View>
 
       <View style={style.container}>
-        <Text>ID do Livro: {id}</Text>
-        <Text> Titulo: {livro.titulo} </Text>
-        <Text> Autor: {livro.autor} </Text>
-        <Text> Ano de Lançamento: {livro.ano} </Text>
-        <Text> Quantidade disponível: {livro.quantidade} </Text>
-        <Text>Faça o cadastro para alugar o livro</Text>
+        <Text style={style.containerlivros}>ID do Livro: {id} </Text>
+         <Text style={style.containerlivros}>Titulo: {livro.titulo}</Text>
+         <Text style={style.containerlivros}>Autor: {livro.autor} </Text>
+         <Text style={style.containerlivros}>Ano de Lançamento: {livro.ano}</Text> 
+         <Text style={style.containerlivros}>Quantidade disponível: {livro.quantidade}</Text> 
+         <Text style={style.containerlivros}>Faça o cadastro para alugar o livro</Text>
 
 
         <TextInput
@@ -120,14 +124,20 @@ export default function BooksPage() {
             : <></>
         }
 
+{
+        alert3 ? <Text style={style.alugaText}>
+          Livro Alugado!!!
+        </Text>
+          : <></>
+      }
 
 
 
 
-        <View style={style.buttonContainer}>
+
+        <View style={style.buttonblue}>
           <Button
             title='Salvar'
-            style={style.buttonblue}
             color='deepskyblue'
             onPress={() => onMessage()} />
         </View>
@@ -135,7 +145,7 @@ export default function BooksPage() {
     </View>
 
 
-
+    </ScrollView>
   )
 }
 
@@ -148,6 +158,16 @@ const style = StyleSheet.create({
     backroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  containerlivros: {
+    borderWidth: 3,
+    borderColor: 'fuchsia',
+    borderRadius: 8,
+    padding: 12,
+    fontSize: 16,
+    backgroundColor: 'lightskyblue',
+    marginBottom: 16
   },
 
   input: {
@@ -176,7 +196,10 @@ const style = StyleSheet.create({
 
   buttonblue: {
     backgroundColor: 'deepskyblue',
-    borderRadius: 12
+    borderRadius: 12,
+    borderColor: 'fuchsia',
+    borderWidth: 3,
+    padding: 5
   },
 
   errorText: {
@@ -184,6 +207,14 @@ const style = StyleSheet.create({
     fontSize: 12,
     fontStyle: "italic"
   },
+
+
+  alugaText: {
+    color: "deepskyblue",
+    fontSize: 12,
+    fontStyle: "italic"
+  },
+
   viewBack:{
     height: "2rem",
     width: "5rem"
@@ -193,10 +224,8 @@ const style = StyleSheet.create({
     borderColor: 'fuchsia',
     borderRadius: 8,
     padding: 12,
-    fontSize: 16,
     backgroundColor: 'deepskyblue',
     marginBottom: 16,
-    fontStyle: "italic",
     color: "white"
   },
 
