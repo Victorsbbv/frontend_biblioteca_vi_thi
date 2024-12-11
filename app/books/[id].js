@@ -1,5 +1,5 @@
-import { useLocalSearchParams } from "expo-router";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { router, useLocalSearchParams } from "expo-router";
+import { Button, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useEffect, useState } from "react";
 import { getRequestid, postRequest } from "../../API/Api";
 
@@ -21,9 +21,8 @@ export default function BooksPage() {
     setAlert2(false);
 
     if (userTitle !== "" && userNascimento !== "") {
-      let newTask = await postRequest(id, userTitle, userNascimento);
-      setTask(newTask);
-
+      let emprestimo = await postRequest(id, userTitle, userNascimento);
+      setlivro(emprestimo)
       setUserTitle("");
       setUserNascimento("");
       livro.quantidade - 1;
@@ -54,30 +53,6 @@ export default function BooksPage() {
 
 
 
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resp = await postRequest(locacao);
-        setuser(resp)
-
-      } catch (ex) {
-        console.error(ex)
-      }
-    };
-
-    fetchData();
-
-  }, [])
-
-
-
-
-
-
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -94,6 +69,18 @@ export default function BooksPage() {
   }, [])
 
   return (
+<View>
+<View style={style.container}>
+<Pressable onPress={() => {
+        router.push({
+          pathname: "/"
+        })
+      }}>
+        <Text>VOLTAR</Text>
+        </Pressable>
+
+</View>
+    
     <View style={style.container}>
       <Text>ID do Livro: {id}</Text>
       <Text> Titulo: {livro.titulo} </Text>
@@ -108,14 +95,14 @@ export default function BooksPage() {
         placeholder='Nome do Usuário'
         value={userTitle}
         onChangeText={setUserTitle}
-      />
+        />
 
       {
         alert1 ? <Text style={styles.errorText}>
           Necessario informar o nome!
         </Text>
           : <></>
-      }
+        }
 
 
 
@@ -124,14 +111,14 @@ export default function BooksPage() {
         placeholder='Ano de Nascimento'
         value={userNascimento}
         onChangeText={setUserNascimento}
-      />
+        />
 
       {
         alert2 ? <Text style={styles.errorText}>
           Necessario informar o ano de nascimento!
         </Text>
           : <></>
-      }
+        }
 
 
 
@@ -145,11 +132,15 @@ export default function BooksPage() {
           onPress={() => onMessage()} />
       </View>
     </View>
+</View>
 
 
 
   )
 }
+
+
+
 
 const style = StyleSheet.create({
   container: {
