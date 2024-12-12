@@ -72,8 +72,8 @@ export default function BooksPage() {
   }, [])
 
   return (
-    <ScrollView style={style.cor}>
-      <View>
+    <ScrollView style={{ backgroundColor: "darkblue" }}>
+      <View style={style.cor}>
         <View style={style.viewBack}>
           <Pressable style={style.buttonvoltar} onPress={() => {
             router.push({
@@ -234,7 +234,8 @@ const style = StyleSheet.create({
 
   viewBack: {
     height: "2rem",
-    width: "5rem"
+    width: "5rem",
+    backroundColor: "red"
   },
   buttonvoltar: {
     borderWidth: 3,
