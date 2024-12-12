@@ -26,11 +26,12 @@ export default function Page() {
 
 
   return(
+    <ScrollView>
     <View style={styles.container}>
-    <Text> Open up App.js to start working on your app</Text>
+    <Text style={styles.tituloNeon}> BIBLIOTECA NEON </Text>
     <StatusBar style="auto" />
     {livro.map((item, index) =>(
-      <Pressable onPress={() => {
+      <Pressable style={styles.tituloNeon} onPress={() => {
         router.push({
           pathname: "books/[id]",
           params: {id: item.id}
@@ -41,6 +42,7 @@ export default function Page() {
     ))}
 
       </View>
+      </ScrollView>
   );
 
 };
@@ -190,11 +192,33 @@ export default function Page() {
  const styles = StyleSheet.create({
    container: {
      flex: 1,
-     backgroundColor: '#fff',
+     backgroundColor: 'darkblue',
      alignItems: "center",
     justifyContent: "center",
      padding: 16,
    },
+
+   tituloNeon: {
+    borderWidth: 3,
+    borderColor: 'fuchsia',
+    borderRadius: 8,
+    padding: 12,
+    backgroundColor: 'deepskyblue',
+    marginBottom: 16,
+    color: "white",
+    fontSize: 25,
+    fontStyle: "bold"
+  },
+
+  tituloslivros: {
+    borderWidth: 3,
+    borderColor: 'fuchsia',
+    borderRadius: 8,
+    padding: 12,
+    backgroundColor: 'deepskyblue',
+    marginBottom: 16,
+    color: "white"
+  },
 
   //  label: {
   //    fontSize: 16,

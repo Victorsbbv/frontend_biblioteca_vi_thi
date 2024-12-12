@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useEffect, useState } from "react";
 import { getRequestid, postRequest } from "../../API/Api";
 
@@ -72,77 +72,84 @@ export default function BooksPage() {
   }, [])
 
   return (
-    <ScrollView>
-    <View>
-      <View style={style.viewBack}>
-        <Pressable style={style.buttonvoltar} onPress={() => {
-          router.push({
-            pathname: "/"
-          })
-        }}>
-          <Text style={{color: "white"}}>VOLTAR</Text>
-        </Pressable>
+    <ScrollView style={style.cor}>
+      <View>
+        <View style={style.viewBack}>
+          <Pressable style={style.buttonvoltar} onPress={() => {
+            router.push({
+              pathname: "/"
+            })
+          }}>
+            <Text style={{ color: "white" }}>VOLTAR</Text>
+          </Pressable>
 
-      </View>
+        </View>
 
-      <View style={style.container}>
-        <Text style={style.containerlivros}>ID do Livro: {id} {"\n"} 
-         Titulo: {livro.titulo} {"\n"} 
-         Autor: {livro.autor} {"\n"} 
-         Ano de Lançamento: {livro.ano} {"\n"} 
-         Quantidade disponível: {livro.quantidade} {"\n"} 
-         Faça o cadastro para alugar o livro</Text>
+        <View style={style.container}>
+          <Text style={style.containerlivros}>ID do Livro: {id} {"\n"}
+            Titulo: {livro.titulo} {"\n"}
+            Autor: {livro.autor} {"\n"}
+            Ano de Lançamento: {livro.ano} {"\n"}
+            Quantidade disponível: {livro.quantidade} {"\n"} </Text>
+            <Image
+                        source={{
+                            uri: `${livro.imagemUrl}`
+                        }}
+                        style={{ alignItems: 'center', width: 200, height: 300, borderRadius: 9, borderColor: "fuchsia", borderWidth: 3, shadowColor: 'black', shadowOpacity: 9, shadowRadius: 5, }}
+                    />
 
-
-        <TextInput
-          style={style.input}
-          placeholder='Nome do Usuário'
-          value={userTitle}
-          onChangeText={setUserTitle}
-        />
-
-        {
-          alert1 ? <Text style={style.errorText}>
-            Necessario informar o nome!
-          </Text>
-            : <></>
-        }
+          <Text style={style.cadastroText}> Faça o cadastro para alugar o livro {"\n"} </Text>
 
 
+          <TextInput
+            style={style.input}
+            placeholder='Nome do Usuário'
+            value={userTitle}
+            onChangeText={setUserTitle}
+          />
 
-        <TextInput
-          style={style.input}
-          placeholder='Ano de Nascimento'
-          value={userNascimento}
-          onChangeText={setUserNascimento}
-        />
-
-        {
-          alert2 ? <Text style={style.errorText}>
-            Necessario informar o ano de nascimento!
-          </Text>
-            : <></>
-        }
-
-{
-        alert3 ? <Text style={style.alugaText}>
-          Livro Alugado!!!
-        </Text>
-          : <></>
-      }
+          {
+            alert1 ? <Text style={style.errorText}>
+              Necessario informar o nome!
+            </Text>
+              : <></>
+          }
 
 
 
+          <TextInput
+            style={style.input}
+            placeholder='Ano de Nascimento'
+            value={userNascimento}
+            onChangeText={setUserNascimento}
+          />
+
+          {
+            alert2 ? <Text style={style.errorText}>
+              Necessario informar o ano de nascimento!
+            </Text>
+              : <></>
+          }
+
+          {
+            alert3 ? <Text style={style.alugaText}>
+              Livro Alugado!!!
+            </Text>
+              : <></>
+          }
 
 
-        <View style={style.buttonblue}>
-          <Button
-            title='Salvar'
-            color='deepskyblue'
-            onPress={() => onMessage()} />
+
+
+
+          <View style={style.buttonblue}>
+            <Button
+              title='Salvar'
+              color='deepskyblue'
+              onPress={() => onMessage()} />
+          </View>
         </View>
       </View>
-    </View>
 
 
     </ScrollView>
@@ -155,9 +162,13 @@ export default function BooksPage() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backroundColor: "red",
+    backroundColor: "darkslateblue",
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  cor: {
+    backroundColor: "red",
   },
 
   containerlivros: {
@@ -215,7 +226,13 @@ const style = StyleSheet.create({
     fontStyle: "italic"
   },
 
-  viewBack:{
+  cadastroText: {
+    color: "fuchsia",
+    fontSize: 12,
+    fontStyle: "italic"
+  },
+
+  viewBack: {
     height: "2rem",
     width: "5rem"
   },
